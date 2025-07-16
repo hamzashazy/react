@@ -15,12 +15,8 @@ const ProtectedRoute = ({ children }) => {
   return isLoggedIn ? children : <Navigate to="/" />;
 };
 
-console.log("✅ App component renders");
-
 export default function App() {
   return (
-    <>
-      <h1>Testing - App Loaded</h1>
     <Routes>
       <Route path="/" element={<Signup />} />
       <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -31,6 +27,5 @@ export default function App() {
       <Route path="*" element={<Signup />} /> 
 
     </Routes>
-    </>
   );
 }
