@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   // Move the basename prop to the Router component here
-  <Router basename="/foodiefly">
+  <Router>
     <ToastProvider>
 
       <Navbar />
