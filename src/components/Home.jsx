@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import manImg from "../Assets/man.jpeg";
 import CardSection from "./CardSection";
 import Carousel  from "./Carousel";
+import { allProducts } from "../data/products";
+import Card from "./Card";
 
 export default function Home() {
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(()=>{
+    fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((data) => {
+    setProducts(data);
+    setLoading(false);
+    })
+    .catch((err) => {
+    console.error("Error fetching products:", err);
+    setLoading(false);
+    });
+  },[])
+
+    if (loading) return <p>Loading products...</p>;
+    
   return (
     <main className="bg-[#1e293b] text-white min-h-screen font-sans">
       {/* Hero Section */}
@@ -24,7 +45,6 @@ export default function Home() {
           </div>
         </div>
       </header>
-        <Carousel/>
 
       {/* New Arrivals Section */}
       <section className="py-10 text-center">
@@ -34,7 +54,7 @@ export default function Home() {
 
       {/* Cards */}
       <section className="px-4 mb-10">
-        <CardSection />
+        <Card products={products} />
       </section>
 
       {/* Banner */}

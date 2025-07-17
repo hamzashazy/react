@@ -8,7 +8,7 @@ const CardItem = ({
   description,
   price,
   image,
-  rating = 0,
+  rate = 0,
   size = [],
   colour,
   category
@@ -50,13 +50,13 @@ const CardItem = ({
             </p>
           )}
 
-          {/* Rating */}
+          {/* rate */}
           <div className="flex items-center space-x-1 pt-2">
             {[...Array(5)].map((_, i) => (
               <AiFillStar
                 key={i}
                 className={`w-5 h-5 ${
-                  i < rating ? "text-yellow-400" : "text-gray-300"
+                  i < rate ? "text-yellow-400" : "text-gray-300"
                 }`}
               />
             ))}
@@ -78,7 +78,7 @@ const CardItem = ({
           </div>
         {/* Price & Button */}
         <div className="px-6 pb-3 flex justify-between items-center border-t border-gray-100">
-          <span className="text-xl font-bold text-cyan-600">{price}</span>
+          <span className="text-xl font-bold text-cyan-600">{price}$</span>
           <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full font-semibold transition">
             Add to Cart
           </button>
